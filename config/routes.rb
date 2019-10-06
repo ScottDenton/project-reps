@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :exercise_muscles
+  resources :exercises
   resources :muscles
   resources :muscle_groups
   resources :users
