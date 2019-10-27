@@ -1,8 +1,20 @@
-<div class="bs">
-  <h1>Create new Exercise</h1>
-  <%= form_for @exercise %>
+<div class="container">
+  <div class="new-exercise-form-container">
+    <h1>Create new Exercise</h1>
+    <%= form_for @exercise do |f|%>
+      <%= f.text_field :name %>
+      <h1>Muscle Groups</h1>
+      <%= f.fields_for @exercise_muscle do |ff| %>
+        <%= ff.collection_check_boxes :id, MuscleGroup.all, :id, :name, include_hidden: false, class: 'form-checkbox'  %>
+      <% end %>
+      <%= f.submit class: 'btn btn-primary' %>
+   <% end %>
 
- <h1>Muscle Groups used</h1>
- <%= form_for @ %>
+    <div class="exercise-index-list">
+      <% @exercises.each do |exercise| %>
+        <h2><%= link_to exercise.name, exercise_path(exercise) %></h2>
+      <% end %>
+    </div>
 
+  </div>
 </div>
