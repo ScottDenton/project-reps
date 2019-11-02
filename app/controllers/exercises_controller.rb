@@ -1,14 +1,13 @@
 class ExercisesController < ApplicationController
-
   def index
     @exercise = Exercise.new
     @exercise_muscle = ExerciseMuscle.new
-    @exercises = Exercise.all
+    @exercises = Exercise.where(user_id: current_user.id)
   end
 
   def create
-    @exercise = Exercise.create(name: exercise_params[:name])
-    exercise_params[:exercise_muscle][:id].each do |muscle_id|
+    @exercise = Exercise.create(exercise_params)
+    raw_exercise_params[:exercise_muscle][:id].each do |muscle_id|
      ExerciseMuscle.create(
       muscle_group_id: muscle_id.to_i,
       exercise_id: @exercise.id
@@ -24,13 +23,18 @@ class ExercisesController < ApplicationController
 
   private
 
-  def exercise_params
+  def raw_exercise_params
     params.require(:exercise).permit(
       :name,
+      :user_id,
       {:exercise_muscle =>[
         :id => []
         ]
       })
+  end
+
+  def exercise_params
+    {name: raw_exercise_params[:name], user_id: raw_exercise_params[:user_id]}
   end
 
 
