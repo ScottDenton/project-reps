@@ -1,20 +1,20 @@
 <div class="container">
-  <div class="new-exercise-form-container">
+  <div class="new-strength_component-form-container">
     <h1>Create new Exercise</h1>
-    <%= form_for @exercise do |f|%>
+    <%= form_for @strength_component do |f|%>
       <%= f.text_field :name %>
       <%= f.hidden_field :user_id, value:  current_user.id %>
       <h1>Muscle Groups</h1>
-      <%= f.fields_for @exercise_muscle do |ff| %>
+      <%= f.fields_for @strength_component_muscle do |ff| %>
         <%= ff.collection_check_boxes :id, MuscleGroup.all, :id, :name, include_hidden: false, class: 'form-checkbox'  %>
       <% end %>
       <%= f.submit class: 'btn btn-primary' %>
    <% end %>
 
-    <div class="exercise-index-list">
-      <h2>My exercises</h2>
-      <% @exercises.each do |exercise| %>
-        <h2><%= link_to exercise.name, exercise_path(exercise) %></h2>
+    <div class="strength_component-index-list">
+      <h2>My strength components</h2>
+      <% @strength_components.each do |strength_component| %>
+        <h2><%= link_to strength_component.name, strength_component_path(strength_component) %></h2>
       <% end %>
     </div>
 

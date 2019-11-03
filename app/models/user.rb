@@ -7,6 +7,6 @@ class User < ApplicationRecord
 
 
 
-  has_many :exercises
+  has_many :strength_components
 
 end

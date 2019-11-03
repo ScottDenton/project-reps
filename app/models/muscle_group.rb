@@ -1,4 +1,4 @@
 class MuscleGroup < ApplicationRecord
-  has_many :exercise_muscles
-  has_many :exercises, through: :exercise_muscles
+  has_many :strength_component_muscles
+  has_many :strength_components, through: :strength_component_muscles
 end
