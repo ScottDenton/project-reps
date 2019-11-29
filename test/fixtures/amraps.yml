@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  rounds: 1
+  reps: 1
+  user_id: 1
+  work: MyText
+
+two:
+  name: MyString
+  rounds: 1
+  reps: 1
+  user_id: 1
+  work: MyText
