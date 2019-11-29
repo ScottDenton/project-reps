@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cardio_components
+  resources :amraps
   resources :strength_component_muscles
   resources :strength_components
   resources :muscles

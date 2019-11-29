@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_192755) do
+ActiveRecord::Schema.define(version: 2019_11_29_192432) do
+
+  create_table "amraps", force: :cascade do |t|
+    t.string "name"
+    t.integer "rounds"
+    t.integer "reps"
+    t.integer "user_id"
+    t.text "work"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cardio_components", force: :cascade do |t|
+    t.string "name"
+    t.integer "distance"
+    t.integer "hours"
+    t.integer "minutes"
+    t.integer "seconds"
+    t.integer "calories"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "muscle_groups", force: :cascade do |t|
     t.string "name"
@@ -37,6 +59,9 @@ ActiveRecord::Schema.define(version: 2019_11_03_192755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "weight"
+    t.integer "reps"
+    t.integer "sets"
   end
 
   create_table "users", force: :cascade do |t|

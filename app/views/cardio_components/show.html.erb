@@ -1,0 +1,13 @@
+<div class="container">
+
+  <h1><%= @cardio_component.name %></h1>
+  <p>Distance: <%= @cardio_component.distance %> kgs</p>
+  <p> Time
+    <%= cardio_time_helper(@cardio_component) %>
+  </p>
+  <p>Calories: <%= @cardio_component.calories %> </p>
+</div>
+
+<div class="">
+  <%= link_to 'Back to Cardio', cardio_components_path %>
+</div>
