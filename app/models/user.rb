@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
 
   has_many :strength_components
+  has_many :cardio_components
 
 end
