@@ -1,0 +1,2 @@
+class Amrap < ApplicationRecord
+end

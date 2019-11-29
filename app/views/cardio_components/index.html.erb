@@ -1,0 +1,50 @@
+<div class="container">
+  <% if flash.any? %>
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  <% end %>
+  <div class="new-strength-component-form-container">
+    <h1>Add new Cardio workout</h1>
+    <%= form_for @cardio_component do |f|%>
+    <div class="form-field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form-field">
+      <%= f.label 'Distance (meters)' %>
+      <%= f.number_field :distance %>
+    </div>
+    <div class="form-field">
+      <%= f.label :hours %>
+      <%= f.text_field :hours %>
+    </div>
+    <div class="form-field">
+      <%= f.label :minutes %>
+      <%= f.text_field :minutes %>
+    </div>
+    <div class="form-field">
+      <%= f.label :seconds %>
+      <%= f.text_field :seconds %>
+    </div>
+    <div class="form-field">
+      <%= f.label :calories %>
+      <%= f.number_field :calories %>
+    </div>
+    <%= f.hidden_field :user_id, value:  current_user.id %>
+    <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+
+    <div class="">
+      <%= link_to 'Back to all workouts', root_path %>
+    </div>
+
+    <div class="cardio-component-index-list">
+      <h2>My Cardio Workouts</h2>
+      <% @cardio_components&.each do |cardio_component| %>
+      <h2><%= link_to cardio_component.name, cardio_component_path(cardio_component) %></h2>
+      <% end %>
+    </div>
+
+  </div>
+</div>
