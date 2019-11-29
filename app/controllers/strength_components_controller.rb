@@ -6,8 +6,8 @@ class StrengthComponentsController < ApplicationController
   end
 
   def create
-    @strength_component = StrengthComponent.create(strength_component_params)
-    raw_strength_component_params[:strength_component_muscle][:id].each do |muscle_id|
+    @strength_component = StrengthComponent.create(strength_component_params.except(:strength_component_muscle))
+    strength_component_params[:strength_component_muscle][:id].each do |muscle_id|
      StrengthComponentMuscle.create(
       muscle_group_id: muscle_id.to_i,
       strength_component_id: @strength_component.id
@@ -23,18 +23,17 @@ class StrengthComponentsController < ApplicationController
 
   private
 
-  def raw_strength_component_params
+  def strength_component_params
     params.require(:strength_component).permit(
       :name,
       :user_id,
+      :weight,
+      :reps,
+      :sets,
       {:strength_component_muscle =>[
         :id => []
         ]
       })
-  end
-
-  def strength_component_params
-    {name: raw_strength_component_params[:name], user_id: raw_strength_component_params[:user_id]}
   end
 
 

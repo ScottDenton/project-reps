@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="new-amrap-form-container">
+    <h1>Add new AMRAP</h1>
+    <%= form_for @amrap do |f|%>
+    <div class="form-field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form-field">
+      <%= f.label :work %>
+      <%= f.text_field :work %>
+    </div>
+    <div class="form-field">
+      <%= f.label :rounds %>
+      <%= f.number_field :rounds %>
+    </div>
+    <div class="form-field">
+      <%= f.label :reps %>
+      <%= f.number_field :reps %>
+    </div>
+
+    <%= f.hidden_field :user_id, value:  current_user.id %>
+    <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+
+    <div class="amrap-index-list">
+      <h2>My AMRAPS</h2>
+      <% @amraps.each do |amrap| %>
+      <h2><%= link_to amrap.name, amrap_path(amrap) %></h2>
+      <% end %>
+    </div>
+
+  </div>
+</div>

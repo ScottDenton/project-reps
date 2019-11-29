@@ -1,6 +1,9 @@
 <div class="container">
 
   <h1><%= @strength_component.name %></h1>
+  <p>Weight: <%= @strength_component.weight %> kgs</p>
+  <p>Reps: <%= @strength_component.reps %> </p>
+  <p>Sets: <%= @strength_component.sets %> </p>
   <h3>Muscle Groups</h2>
   <ul>
   <% @strength_component.muscle_groups.each do |muscle| %>

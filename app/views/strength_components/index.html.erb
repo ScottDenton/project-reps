@@ -1,20 +1,39 @@
 <div class="container">
-  <div class="new-strength_component-form-container">
-    <h1>Create new Exercise</h1>
+  <div class="new-strength-component-form-container">
+    <h1>Add new Strength Component</h1>
     <%= form_for @strength_component do |f|%>
+    <div class="form-field">
+      <%= f.label :name %>
       <%= f.text_field :name %>
-      <%= f.hidden_field :user_id, value:  current_user.id %>
-      <h1>Muscle Groups</h1>
-      <%= f.fields_for @strength_component_muscle do |ff| %>
-        <%= ff.collection_check_boxes :id, MuscleGroup.all, :id, :name, include_hidden: false, class: 'form-checkbox'  %>
-      <% end %>
-      <%= f.submit class: 'btn btn-primary' %>
-   <% end %>
+    </div>
+    <div class="form-field">
+      <%= f.label :weight %>
+      <%= f.number_field :weight %>
+    </div>
+    <div class="form-field">
+      <%= f.label :reps %>
+      <%= f.number_field :reps %>
+    </div>
+    <div class="form-field">
+      <%= f.label :sets %>
+      <%= f.number_field :sets %>
+    </div>
+    <%= f.hidden_field :user_id, value:  current_user.id %>
+    <h1>Muscle Groups</h1>
+    <%= f.fields_for @strength_component_muscle do |ff| %>
+    <%= ff.collection_check_boxes :id, MuscleGroup.all, :id, :name, include_hidden: false, class: 'form-checkbox'  %>
+    <% end %>
+    <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+
+    <div class="">
+      <%= link_to 'Back to all workouts', root_path %>
+    </div>
 
     <div class="strength_component-index-list">
       <h2>My strength components</h2>
       <% @strength_components.each do |strength_component| %>
-        <h2><%= link_to strength_component.name, strength_component_path(strength_component) %></h2>
+      <h2><%= link_to strength_component.name, strength_component_path(strength_component) %></h2>
       <% end %>
     </div>
 
