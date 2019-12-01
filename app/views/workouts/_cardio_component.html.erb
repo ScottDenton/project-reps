@@ -1,0 +1,6 @@
+<% component.cardio_components.each do |cardio_component| %>
+  <h3><%= cardio_component.name %></h3>
+  <h4>distance: <%= cardio_component.distance %> kgs</h4>
+  <h4>Time: <%= cardio_time_helper(cardio_component) %></h4>
+  <h4>Calories: <%= cardio_component.calories %></h4>
+<% end %>

@@ -1,0 +1,4 @@
+<% @workout.workout_components.each do |component| %>
+  <%= render component_kind_path(component), component: component %>
+<% end %>
+ <%= link_to 'Back to all workouts', workouts_path %>
