@@ -1,0 +1,8 @@
+<% @workouts.each do |workout| %>
+  <%= link_to workout.created_at, workout_path(workout) %>
+  <ul>
+    <% component_names(workout).each do |exercise_name| %>
+      <li> <%= exercise_name %> </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,6 @@
+<% component.strength_components.each do |strength_component| %>
+  <h3><%= strength_component.name %></h3>
+  <h4>Weight: <%= strength_component.weight %> kgs</h4>
+  <h4>Reps: <%= strength_component.reps %></h4>
+  <h4>Sets: <%= strength_component.sets %></h4>
+<% end %>
